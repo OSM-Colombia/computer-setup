@@ -52,6 +52,26 @@ else
     sudo apt install -y git
 fi
 
+####### Instalar JOSM #######
+
+# Instalar Java
+
+# Mirar si Java está instalado, si no, instalarlo
+if command -v java &>/dev/null; then
+    echo "Java ya está instalado"
+    java -version
+else
+    echo "Java no está instalado, se va a instalar"
+    echo "Instalando OpenJDK 11..."
+    sudo apt update
+    sudo apt install -y openjdk-11-jre
+fi
+
+# Instalar JOSM
+sudo add-apt-repository ppa:josm/ppa
+sudo apt update
+sudo apt install -y josm
+
 ####### Instalar docker #######
 
 # Instalar Docker Engine
