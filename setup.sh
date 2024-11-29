@@ -13,7 +13,6 @@
 
 set -u
 set -e
-set -o pipefail
 
 declare -r VERSION="2024-10-03"
 
