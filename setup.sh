@@ -136,7 +136,7 @@ install_3D() {
     linux_distro=$(grep '^NAME=' /etc/os-release | cut -d '"' -f 2)
     if [[ "$linux_distro" == "Ubuntu" ]]; then
         echo "Empieza la instalación de Blender"
-        sudo apt install libfuse2 && blender -y
+        sudo apt install libfuse2 blender -y
         echo "Se finalizó la instalación de Blender"
     fi
 }
