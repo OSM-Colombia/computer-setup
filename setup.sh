@@ -141,6 +141,19 @@ install_3D() {
     fi
 }
 
+install_config_natural () {
+    echo "Empezando la instalación de la configuración natural. Recuerde tener instalado GNOME Shell Integration en Firefox"
+    read -t 5
+    linux_distro=$(grep '^NAME=' /etc/os-release | cut -d '"' -f 2)
+    if [[ "$linux_distro" == "Fedora Linux" ]]; then
+        echo "Empieza la personalización en Fedora..."
+        sudo dnf install gnome-shell-extension-appindicator gnome-shell-extensions gnome-extensions-app gnome-tweaks
+        echo "Instalando User Themes"
+        sudo dnf install gnome-shell-extension-user-theme
+        gnome-extensions enable user-theme@gnome-shell-extensions.gcampax.github.com
+    fi
+}
+
 
 read -p "¿Qué quieres instalar? (Suite 3D [1] / Suite Mapas [2] / Config Natural [3]): " option
 
@@ -151,6 +164,9 @@ case $option in
         ;;
     2)
         install_mapas
+        ;;
+    3)
+        install_config_natural
         ;;
     *)
         echo "Opción inválida. Por favor elige, 1, 2, o 3."
