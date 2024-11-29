@@ -128,13 +128,16 @@ install_mapas(){
 install_3D() {
     # Instalación de varios programas para diseño 3D
     echo "Empezando instalación de OrcaSlicer y Blender..."
-    cd ~/Desktop || { echo "Error: No se pudo acceder a ~/Desktop"; exit 1; }
+    cd /home/$SUDO_USER/Desktop || { echo "Error: No se pudo acceder a ~/Desktop"; exit 1; }
     wget https://github.com/SoftFever/OrcaSlicer/releases/download/v2.2.0/OrcaSlicer_Linux_V2.2.0.AppImage
     chmod +x OrcaSlicer_Linux_V2.2.0.AppImage
-    cd $HOME
+    cd /home/$SUDO_USER/Desktop
     echo "OrcaSlicer se descargó correctamente"
-    if ["$linux_distro" == "Ubuntu"]; then
+    linux_distro=$(grep '^NAME=' /etc/os-release | cut -d '"' -f 2)
+    if [[ "$linux_distro" == "Ubuntu" ]]; then
+        echo "Empieza la instalación de Blender"
         sudo apt install libfuse2 && blender -y
+        echo "Se finalizó la instalación de Blender"
     fi
 }
 
