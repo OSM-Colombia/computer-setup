@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/bash
 
 # Este script instala dependencias y programas para
 # las actividades de talleres al momento de utilizar
